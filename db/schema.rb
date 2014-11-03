@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20141103204447) do
     t.datetime "confirmation_sent_at"
     t.string   "full_name",                              null: false
     t.string   "username"
-    t.integer  "phone_number",                           null: false
+    t.string   "phone_number",                           null: false
     t.string   "address"
     t.string   "city"
     t.string   "state"

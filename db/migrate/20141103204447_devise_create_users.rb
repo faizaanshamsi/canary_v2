@@ -26,7 +26,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string   :full_name, null: false
       t.string   :username
-      t.integer  :phone_number, null: false
+      t.string  :phone_number, null: false
       t.string   :address
       t.string   :city
       t.string   :state
