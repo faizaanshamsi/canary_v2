@@ -32,7 +32,7 @@ group :development, :test do
   gem 'capybara'
   gem 'dotenv-rails'
   gem 'letter_opener'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
   gem 'capybara-email'
   gem 'email_spec'
 end
