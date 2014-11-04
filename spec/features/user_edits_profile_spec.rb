@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "User edits profile" do
-
   scenario "User edits profile" do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
@@ -17,5 +16,4 @@ feature "User edits profile" do
 
     page.should have_content("Your account has been updated successfully")
   end
-
 end
