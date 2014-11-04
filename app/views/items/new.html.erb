@@ -1,0 +1,24 @@
+<%= form_for @item do |f| %>
+  <%= f.label :title  %><br>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+
+  <%= f.label :dimensions  %><br>
+  <%= f.text_field :dimensions %>
+
+  <%= f.label :brand  %><br>
+  <%= f.text_field :brand %>
+
+  <%= f.label :condition  %><br>
+  <%= f.select :condition, Item::CONDITIONS %>
+
+  <%= f.label :age  %><br>
+  <%= f.number_field :age %>
+
+  <%= f.label :category  %><br>
+  <%= f.select :category, Item::CATEGORIES %>
+
+  <%= f.submit "Continue" %>
+<% end %>
