@@ -4,6 +4,7 @@ class CreateSpecial < ActiveRecord::Migration
       t.string :name, null: false
 
       t.index :name, unique: true
+      t.timestamps
     end
   end
 end

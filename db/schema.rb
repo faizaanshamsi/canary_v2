@@ -84,7 +84,9 @@ ActiveRecord::Schema.define(version: 20141105171618) do
   end
 
   create_table "specials", force: true do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "specials", ["name"], name: "index_specials_on_name", unique: true, using: :btree

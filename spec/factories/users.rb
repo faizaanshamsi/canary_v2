@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     full_name 'canary bob'
-    username 'canary'
+    sequence(:username) { |n| "#{n}canary" }
     sequence(:phone_number, 111_111_1111) { |n| "#{n}".to_i }
     sequence(:email) { |n| "#{n}test@canary.com"}
 

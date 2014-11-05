@@ -4,7 +4,15 @@ describe ItemSpecial do
   describe 'validations' do
     it { should validate_presence_of(:item) }
     it { should validate_presence_of(:special) }
-    it { should validate_uniqueness_of(:item).scoped_to(:special_id) }
+    it 'should validate uniqueness of item scoped to special' do
+      item_special = FactoryGirl.create(:item_special) 
+      duplicate = FactoryGirl.build(:item_special, item: item_special.item, special: item_special.special)
+
+      duplicate.valid?
+      binding.pry
+      # expect duplicate errors to contain uniqueness
+      # expect(duplicate)
+    end
   end
   describe 'associations' do
     it { should belong_to(:item) }
