@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
   validates :category, presence: true
   validates :submission, presence: true
   validates :user, presence: true
+  validates :location, presence: true
 
   has_many :asking_prices,
     inverse_of: :item

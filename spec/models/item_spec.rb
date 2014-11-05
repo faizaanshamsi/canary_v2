@@ -22,8 +22,7 @@ describe Item do
     it { should belong_to(:category) }
     it { should belong_to(:submission) }
     it { should belong_to (:location) }
-    it { should have_many(:locations) }
-    it { should have_many(:photos) }
+    it { should have_many(:item_photos) }
     it { should have_many(:offers) }
     it { should have_many(:asking_prices) }
     
