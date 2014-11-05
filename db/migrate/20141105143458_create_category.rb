@@ -5,6 +5,7 @@ class CreateCategory < ActiveRecord::Migration
       t.integer :room_id, null: false
 
       t.index :room_id
+      t.timestamps
     end
   end
 end

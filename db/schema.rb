@@ -17,22 +17,26 @@ ActiveRecord::Schema.define(version: 20141105144904) do
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
-    t.string  "name",    null: false
-    t.integer "room_id", null: false
+    t.string   "name",       null: false
+    t.integer  "room_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "categories", ["room_id"], name: "index_categories_on_room_id", using: :btree
 
   create_table "items", force: true do |t|
-    t.string  "title",         null: false
-    t.text    "description",   null: false
-    t.string  "dimensions"
-    t.string  "brand"
-    t.string  "condition",     null: false
-    t.integer "age"
-    t.integer "user_id",       null: false
-    t.integer "submission_id", null: false
-    t.integer "category_id",   null: false
+    t.string   "title",         null: false
+    t.text     "description",   null: false
+    t.string   "dimensions"
+    t.string   "brand"
+    t.string   "condition",     null: false
+    t.integer  "age"
+    t.integer  "user_id",       null: false
+    t.integer  "submission_id", null: false
+    t.integer  "category_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
