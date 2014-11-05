@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:favoriter] do
     full_name 'canary bob'
     sequence(:username) { |n| "#{n}canary" }
     sequence(:phone_number, 111_111_1111) { |n| "#{n}".to_i }

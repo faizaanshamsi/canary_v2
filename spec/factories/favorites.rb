@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :favorite do
     association :item
-    association :favoriter, factory: user
+    association :favoriter
   end
 end
