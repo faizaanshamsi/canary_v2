@@ -8,10 +8,7 @@ describe ItemSpecial do
       item_special = FactoryGirl.create(:item_special) 
       duplicate = FactoryGirl.build(:item_special, item: item_special.item, special: item_special.special)
 
-      duplicate.valid?
-      binding.pry
-      # expect duplicate errors to contain uniqueness
-      # expect(duplicate)
+      expect(duplicate).to_not be_valid
     end
   end
   describe 'associations' do
