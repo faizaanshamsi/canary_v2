@@ -10,5 +10,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :phone_number, numericality: true, length: { is: 10},
             uniqueness: true
-
+  
+  has_many :locations,
+    inverse_of: :user
 end

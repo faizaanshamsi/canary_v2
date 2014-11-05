@@ -12,15 +12,16 @@ describe Item do
     it { should validate_inclusion_of(:condition).in_array(Item::CONDITIONS) }
 
     it { should validate_presence_of(:category) }
-
     it { should validate_presence_of(:submission) } 
     it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:location) }
   end
 
   describe 'associations' do
     it { should belong_to(:user) }
     it { should belong_to(:category) }
     it { should belong_to(:submission) }
+    it { should belong_to (:location) }
     it { should have_many(:locations) }
     it { should have_many(:photos) }
     it { should have_many(:offers) }

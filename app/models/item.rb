@@ -37,4 +37,5 @@ class Item < ActiveRecord::Base
   belongs_to :submission
   belongs_to :category
   belongs_to :user 
+  belongs_to :location
 end
