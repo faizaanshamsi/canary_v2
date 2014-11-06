@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :item_photo do
-    # TODO: Replace with an uploaded file object after mounting uploader
-    photo 'http://placehold.it/350x150'
+    photo Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/fixtures/table.jpg')))
     caption 'Best photo'
 
     association :item

@@ -22,6 +22,10 @@ gem 'bourbon'
 gem 'neat'
 gem 'refills'
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
