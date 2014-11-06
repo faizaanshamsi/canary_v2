@@ -11,6 +11,7 @@ feature "User signs up" do
     fill_in 'Full name', with: user.full_name
     fill_in 'Username', with: user.username
     fill_in 'Phone number', with: user.phone_number
+    fill_in 'Zip', with: user.zip
     fill_in 'Password', with: user.password
     fill_in 'Password confirmation', with: user.password
 

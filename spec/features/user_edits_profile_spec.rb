@@ -10,6 +10,7 @@ feature "User edits profile" do
     fill_in 'Username', with: (user.username + "t")
     fill_in 'Full name', with: (user.full_name + "t")
     fill_in 'Phone number', with: '9999999999'
+    fill_in 'Alternate phone', with: '1234567770'
     fill_in 'Current password', with: user.password
 
     click_button 'Update'

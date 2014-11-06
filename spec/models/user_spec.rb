@@ -4,7 +4,9 @@ RSpec.describe User, :type => :model do
   describe 'validations' do
     it { should validate_presence_of(:full_name) }
     it { should validate_presence_of(:email) }
+    it { should ensure_length_of(:zip).is_equal_to(5) }
     it { should validate_numericality_of(:phone_number) }
+    it { should validate_numericality_of(:second_phone).allow_nil } 
     it 'should validate unique attributes' do
       user = FactoryGirl.create(:user)
       invalid_user = FactoryGirl.build(:user,
