@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   
   has_many :locations,
     inverse_of: :user
+
+  has_many :offers,
+    inverse_of: :user
 end

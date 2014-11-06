@@ -15,7 +15,8 @@ RSpec.describe User, :type => :model do
   end
 
   describe 'associations' do
-
+    it { should have_many(:locations) }
+    it { should have_many(:offers) }
   end
 
 end

@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105235310) do
+ActiveRecord::Schema.define(version: 20141106003852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "asking_prices", force: true do |t|
+    t.integer  "item_id",                       null: false
+    t.boolean  "current",        default: true
+    t.integer  "visit_count",    default: 0
+    t.integer  "offer_count",    default: 0
+    t.integer  "question_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "asking_prices", ["item_id"], name: "index_asking_prices_on_item_id", using: :btree
 
   create_table "bundles", force: true do |t|
     t.string   "title",                      null: false
@@ -74,18 +86,19 @@ ActiveRecord::Schema.define(version: 20141105235310) do
   add_index "item_specials", ["item_id", "special_id"], name: "index_item_specials_on_item_id_and_special_id", unique: true, using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "title",         null: false
-    t.text     "description",   null: false
+    t.string   "title",             null: false
+    t.text     "description",       null: false
     t.string   "dimensions"
     t.string   "brand"
-    t.string   "condition",     null: false
+    t.string   "condition",         null: false
     t.integer  "age"
-    t.integer  "user_id",       null: false
-    t.integer  "submission_id", null: false
-    t.integer  "category_id",   null: false
+    t.integer  "user_id",           null: false
+    t.integer  "submission_id",     null: false
+    t.integer  "category_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "location_id",   null: false
+    t.integer  "location_id",       null: false
+    t.integer  "accepted_offer_id"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
@@ -105,6 +118,18 @@ ActiveRecord::Schema.define(version: 20141105235310) do
   end
 
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
+
+  create_table "offers", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "item_id",     null: false
+    t.float    "amount",      null: false
+    t.datetime "accepted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offers", ["item_id"], name: "index_offers_on_item_id", using: :btree
+  add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree
 
   create_table "rooms", force: true do |t|
     t.string   "name",       null: false
