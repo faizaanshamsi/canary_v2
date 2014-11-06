@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105215448) do
+ActiveRecord::Schema.define(version: 20141105235310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bundles", force: true do |t|
+    t.string   "title",                      null: false
+    t.boolean  "restricted", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name",       null: false
@@ -35,6 +42,17 @@ ActiveRecord::Schema.define(version: 20141105215448) do
   add_index "favorites", ["favoriter_id"], name: "index_favorites_on_favoriter_id", using: :btree
   add_index "favorites", ["item_id", "favoriter_id"], name: "index_favorites_on_item_id_and_favoriter_id", unique: true, using: :btree
   add_index "favorites", ["item_id"], name: "index_favorites_on_item_id", using: :btree
+
+  create_table "item_bundles", force: true do |t|
+    t.integer  "item_id",    null: false
+    t.integer  "bundle_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_bundles", ["bundle_id"], name: "index_item_bundles_on_bundle_id", using: :btree
+  add_index "item_bundles", ["item_id", "bundle_id"], name: "index_item_bundles_on_item_id_and_bundle_id", unique: true, using: :btree
+  add_index "item_bundles", ["item_id"], name: "index_item_bundles_on_item_id", using: :btree
 
   create_table "item_photos", force: true do |t|
     t.string   "photo",      null: false
