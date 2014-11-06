@@ -17,6 +17,8 @@ RSpec.describe User, :type => :model do
   describe 'associations' do
     it { should have_many(:locations) }
     it { should have_many(:offers) }
+    it { should have_many(:favorites) }
+    it { should have_many(:favorite_items).through(:favorites) }
   end
 
 end

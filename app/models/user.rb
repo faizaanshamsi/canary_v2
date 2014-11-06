@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
 
   has_many :offers,
     inverse_of: :user
+
+  has_many :favorites,
+    foreign_key: :favoriter_id
+
+  has_many :favorite_items,
+    through: :favorites
 end
