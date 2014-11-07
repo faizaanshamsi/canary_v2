@@ -4,7 +4,8 @@ FactoryGirl.define do
     city 'Boston'
     state 'MA'
     zip '02134'
-    comment 'This is a storage unit'
+    name 'home'
+    default false
 
     association :user
   end

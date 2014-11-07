@@ -39,6 +39,7 @@ group :development, :test do
   # gem 'rack-mini-profiler'
   gem 'capybara-email'
   gem 'email_spec'
+  gem 'poltergeist'
 end
 
 group :development do

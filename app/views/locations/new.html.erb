@@ -1,0 +1,23 @@
+<%= form_for @location do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+
+  <%= f.label :address %><br>
+  <%= f.text_field :address %>
+
+  <%= f.label :city %><br>
+  <%= f.text_field :city %>
+
+  <%= f.label :state  %><br>
+  <%= f.select :state, Location::STATES %>
+
+  <%= f.label :zip  %><br>
+  <%= f.text_field :zip %>
+
+  <% if current_user.default_location %>
+    <%= f.label :default, "Make default" %><br>
+    <%= f.check_box :default %>
+  <% end %>
+
+  <%= f.submit "Submit" %>
+<% end %>

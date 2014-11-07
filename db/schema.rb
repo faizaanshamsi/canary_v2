@@ -107,12 +107,13 @@ ActiveRecord::Schema.define(version: 20141106214734) do
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
-    t.string   "address",    null: false
-    t.string   "city",       null: false
-    t.string   "state",      null: false
-    t.string   "zip",        null: false
-    t.string   "comment",    null: false
-    t.integer  "user_id",    null: false
+    t.string   "address",                    null: false
+    t.string   "city",                       null: false
+    t.string   "state",                      null: false
+    t.string   "zip",                        null: false
+    t.string   "name",                       null: false
+    t.boolean  "default",    default: false, null: false
+    t.integer  "user_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

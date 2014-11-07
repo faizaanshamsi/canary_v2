@@ -22,5 +22,17 @@ RSpec.describe User, :type => :model do
     it { should have_many(:favorites) }
     it { should have_many(:favorite_items).through(:favorites) }
   end
+  
+  describe '#default_location' do
+    it "returns a user's default location" do
 
+    end
+
+    it "returns nil if no location set" do
+
+    end
+
+    it "sets the first location as default" do
+    end
+  end
 end
