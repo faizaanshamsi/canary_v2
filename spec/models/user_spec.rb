@@ -24,15 +24,16 @@ RSpec.describe User, :type => :model do
   end
   
   describe '#default_location' do
-    it "returns a user's default location" do
-
-    end
-
     it "returns nil if no location set" do
+      user = FactoryGirl.create(:user)
 
+      expect(user.default_location).to be_nil
     end
 
-    it "sets the first location as default" do
+    it "it returns a user's default location and sets the first location as default" do
+      location = FactoryGirl.create(:location)
+
+      expect(location.user.default_location).to eql(location)
     end
   end
 end

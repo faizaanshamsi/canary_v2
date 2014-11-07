@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
          :confirmable
 
   #TODO: FB Sign In
-  #TODO: Username auto created after sign in?
 
   validates :full_name, presence: true
   validates :email, uniqueness: true
@@ -24,4 +23,8 @@ class User < ActiveRecord::Base
 
   has_many :favorite_items,
     through: :favorites
+
+  def default_location
+    locations.find_by(default: true)
+  end
 end

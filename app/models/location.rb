@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+  after_create :set_default
   STATES = ['MA']
   validates :address, presence: true
   validates :city, presence: true
@@ -16,5 +17,8 @@ class Location < ActiveRecord::Base
 
   def default?
     default
+  end
+  def set_default
+    update(default: true) if self.class.count <= 1
   end
 end
