@@ -5,7 +5,7 @@ feature 'user adds location' do
     location = FactoryGirl.build(:location)
     sign_in_as(location.user)
 
-    visit new_location_path
+    visit new_user_location_path(location.user)
     expect(find_field("Name").value).to eql("Home")
     expect(find_field("Zip").value).to eql(location.user.zip)
     fill_in "Name", with: location.name
@@ -25,7 +25,7 @@ feature 'user adds location' do
     location = FactoryGirl.build(:location, user: old_location.user)
     sign_in_as(location.user)
 
-    visit new_location_path
+    visit new_user_location_path(location.user)
     expect(find_field("Name").value).to eql("Home")
     fill_in "Name", with: location.name
     fill_in "Address", with: location.address

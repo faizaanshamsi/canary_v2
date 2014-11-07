@@ -1,9 +1,10 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
+    @locations = Location.where(user: current_user)
   end
   def new
-    @location = Location.new(name: "Home", zip: current_user.zip)
+    @user = current_user
+    @location = Location.new(name: "Home", zip: @user.zip)
   end
 
   def create
@@ -13,7 +14,7 @@ class LocationsController < ApplicationController
 
     if @location.save
       flash[:notice] = "Location added successfully"
-      redirect_to locations_path
+      redirect_to user_locations_path(current_user)
     else
       flash[:notice] = "Unable to save location"
       render :new
