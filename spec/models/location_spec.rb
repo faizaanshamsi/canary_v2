@@ -22,4 +22,12 @@ describe Location do
     it { should belong_to(:user) }
     it { should have_many(:items) }
   end
+  describe '#set_or_update_default' do
+    it 'sets default if no location exists' do
+      location = FactoryGirl.create(:location)
+      expect(location.default).to eql(false)
+      location.set_or_update_default("0")
+      expect(location.default).to eql(true)
+    end
+  end
 end

@@ -6,19 +6,18 @@ feature 'user adds location' do
     sign_in_as(location.user)
 
     visit new_location_path
-    save_and_open_page
-    click_on "Add location"
-    #expect name to be prefilled as home
+    expect(find_field("Name").value).to eql("Home")
+    expect(find_field("Zip").value).to eql(location.user.zip)
     fill_in "Name", with: location.name
     fill_in "Address", with: location.address
     fill_in "City", with: location.city
     select location.state, from: "State"
     fill_in "Zip", with: location.zip
+    click_on "Submit"
 
     expect(page).to have_content("Location added successfully")
     expect(page).to have_content("My locations")
     expect(page).to have_content(location.name)
-    expect(location.user.default_location).to eql(location)
   end
 
   scenario 'user adds second location' do
@@ -26,20 +25,18 @@ feature 'user adds location' do
     location = FactoryGirl.build(:location, user: old_location.user)
     sign_in_as(location.user)
 
-    visit edit_user_registration_path
-
-    click_on "Add location"
-    #expect name to be prefilled as home
+    visit new_location_path
+    expect(find_field("Name").value).to eql("Home")
     fill_in "Name", with: location.name
     fill_in "Address", with: location.address
     fill_in "City", with: location.city
     select location.state, from: "State"
     fill_in "Zip", with: location.zip
     check "Make default"
+    click_on "Submit"
 
     expect(page).to have_content("Location added successfully")
     expect(page).to have_content("My locations")
     expect(page).to have_content(location.name)
-    expect(location.user.default_location).to eql(location)
   end
 end
