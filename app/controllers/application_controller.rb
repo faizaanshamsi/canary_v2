@@ -11,4 +11,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << [:username, :full_name, :phone_number, :zip]
     devise_parameter_sanitizer.for(:account_update) << [:username, :full_name, :phone_number, :zip]
   end
+
+  private
+
+  def authorize_location!
+    unless current_user.default_location
+      flash[:notice] = "Please add a location to continue"
+      redirect_to new_user_location_path(current_user) and return
+    end
+  end
+
 end

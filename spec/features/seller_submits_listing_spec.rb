@@ -29,7 +29,11 @@ feature 'seller submits a listing' do
   end
 
   scenario 'seller without location tries to submit a listing' do
-    
+    seller = FactoryGirl.create(:user)
+    sign_in_as(seller)
+    visit new_item_path
+    expect(page).to have_content("Please add a location to continue")
+    expect(page).to_not have_content("Add Item")
   end
 
   scenario 'seller tries to submit a listing without photos' do

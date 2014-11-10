@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   def new
+    authorize_location!
     @item = Item.new
     @rooms = Room.includes(:categories)
     @locations = current_user.locations.order(default: :desc)
-  end 
+  end
 
   def create
     @item = Item.new(item_params)
