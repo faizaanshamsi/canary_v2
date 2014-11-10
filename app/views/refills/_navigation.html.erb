@@ -7,6 +7,18 @@
     <div class="nav">
       <ul id="navigation-menu">
         <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+        <% if current_user %>
+          <li class="nav-link more"><a href="#" >Profile</a>
+            <ul class="submenu">
+              <li>
+                <%= link_to "Edit Profile", edit_user_registration_path %>  
+              </li> 
+              <li>
+                <%= link_to "My locations", user_locations_path(current_user) %> 
+              </li>
+            </ul> 
+         </li>
+        <% end %>
       </ul>
     </div>
       <% unless current_user %>
