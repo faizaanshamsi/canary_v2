@@ -6,6 +6,7 @@ FactoryGirl.define do
     brand 'IKEA'
     condition 'Excellent'
     age 25
+    purchase_price 100.00
     
     association :user
     association :submission

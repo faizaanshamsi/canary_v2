@@ -2,8 +2,16 @@
   <%= f.label :title  %><br>
   <%= f.text_field :title %>
 
+  <%= f.fields_for :asking_price do |f_asking_price| %>
+    <%= f_asking_price.label :asking_price %><br>
+    <%= f_asking_price.number_field :asking_price %>
+  <% end %>
+
+  <%= f.label :location_id, "Location" %><br>
+  <%= f.collection_select :location_id, @locations, :id, :name %>
+
   <%= f.label :description %><br>
-  <%= f.text_field :description %>
+  <%= f.text_area :description %>
 
   <%= f.label :dimensions  %><br>
   <%= f.text_field :dimensions %>
@@ -14,11 +22,17 @@
   <%= f.label :condition  %><br>
   <%= f.select :condition, Item::CONDITIONS %>
 
+  <%= f.label :purchase_price %>
+  <%= f.number_field :purchase_price %>
+
   <%= f.label :age  %><br>
   <%= f.number_field :age %>
 
-  <%= f.label :category  %><br>
-  <%= f.select :category, Item::CATEGORIES %>
+  <%= f.label :category %>
+  <%= f.grouped_collection_select :category_id, @rooms, :categories, :name, :id, :name, include_blank: true %>
 
-  <%= f.submit "Continue" %>
+  <%= label_tag :quantity %>
+  <%= number_field_tag :quantity %>
+  
+  <%= f.submit "Add Photos" %>
 <% end %>
