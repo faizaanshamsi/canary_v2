@@ -4,7 +4,7 @@ feature 'seller submits a listing' do
   scenario 'seller submits a listing with photos' do
     item = FactoryGirl.build(:item)
     seller = item.user
-    alternate_location = FactoryGirl.create(:location, user: seller)
+    alternate_location = FactoryGirl.create(:location, user: seller, default: true)
     asking_price = FactoryGirl.create(:asking_price, item: item)
     sign_in_as(seller)
 
