@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/faizaanshamsi/canary_v2/badge.png?branch=master)](https://coveralls.io/r/faizaanshamsi/canary_v2?branch=master)
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
