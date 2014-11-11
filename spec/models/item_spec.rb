@@ -16,6 +16,7 @@ describe Item do
     it { should validate_presence_of(:user) }
     it { should validate_presence_of(:location) }
     it { should validate_presence_of(:status) }
+    it { should validate_inclusion_of(:status).in_array(Item::STATUSES) }
   end
 
   describe 'associations' do
@@ -36,5 +37,13 @@ describe Item do
 
     it { should have_many(:favorites) } 
     it { should have_many(:favoriters).through(:favorites) }
+  end
+
+  describe 'status methods' do
+    it 'returns true if drafted' do
+      item = FactoryGirl.create(:item, status: 'drafted')
+
+      expect(item.drafted?).to eql(true)
+    end
   end
 end

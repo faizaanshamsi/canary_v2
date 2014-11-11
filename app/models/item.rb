@@ -1,12 +1,14 @@
 class Item < ActiveRecord::Base
   CONDITIONS = ["Excellent", "Good", "Poor"]
+  STATUSES = ["drafted", "published", "sold", "delisted"]
+
   validates :title, length: { in: 6..100 }  
   validates :dimensions, presence: true, length: { maximum: 100 } 
   validates :brand, presence: true, length: { maximum: 100 } 
   validates :description, length: { in: 20..400 }  
   validates :age, inclusion: { in: 0...10_000 }
   validates :condition, presence: true, inclusion: { in: CONDITIONS }
-  validates :status, presence: true
+  validates :status, presence: true, inclusion: { in: STATUSES }
 
   validates :category, presence: true
   validates :submission, presence: true
@@ -15,7 +17,9 @@ class Item < ActiveRecord::Base
 
   has_many :asking_prices,
     inverse_of: :item
+
   accepts_nested_attributes_for :asking_prices
+
   has_many :offers,
     inverse_of: :item
   has_many :offers,

@@ -10,10 +10,18 @@ class ItemPhotosController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     urls = params[:item_photo][:photo].split(',')
-    urls.each do |url|
-      ItemPhoto.create(photo: url, item_id: params[:item_id])
+    if urls.empty? && @item.item_photos.empty?
+      flash[:notice] = 'You must provide at least one image'
+      @item_photo = @item.item_photos.build
+      render :new
+    else
+      urls.each do |url|
+        ItemPhoto.create(photo: url, item: @item)
+      end
+      flash[:notice] = 'Images added successfully'
+      redirect_to user_item_path(current_user, @item)
     end
-    redirect_to user_item_path(current_user, params[:item_id])
   end
 end
