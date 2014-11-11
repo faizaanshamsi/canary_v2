@@ -1,0 +1,5 @@
+<h1>Item Photos</h1>
+
+<% @item_photos.each do |item_photo| %>
+  <%= filepicker_image_tag item_photo.photo, w: 200, h: 200, fit: 'clip' %><br>
+<% end %>

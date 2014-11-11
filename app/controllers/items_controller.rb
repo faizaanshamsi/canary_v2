@@ -12,10 +12,12 @@ class ItemsController < ApplicationController
     # TODO: Seed submission types and set this to owner submitted
     @item.submission = Submission.first
     if @item.save
-      @item.asking_prices << AskingPrice.create(amount: asking_price_amount)
+      @item.asking_prices << AskingPrice.create(amount: params[:asking_price])
       flash[:notice] =  "Item created successfully"
       redirect_to new_item_item_photo_path(@item)
     else
+      @rooms = Room.includes(:categories)
+      @locations = current_user.locations.order(default: :desc)
       flash[:error] = "Item could not be saved"
       render :new
     end
@@ -27,9 +29,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :location_id, :description,
                                  :dimensions, :brand, :condition,
                                  :purchase_price, :age, :category_id)
-  end
-
-  def asking_price_amount
-    params[:item][:asking_price][:asking_price]
   end
 end

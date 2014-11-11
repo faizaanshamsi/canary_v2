@@ -1,1 +1,8 @@
 <h1>Upload Photo</h1>
+
+<%= form_for [@item, @item_photo] do |f| %>
+  <%= f.label :photo %>
+  <%= f.filepicker_field :photo, { multiple: true, max_size: 5000000 } %>
+
+  <%= f.submit %>
+<% end %>

@@ -22,9 +22,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'refills'
 
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog'
+gem 'filepicker-rails'
 
 group :development, :test do
   gem 'rspec-rails'

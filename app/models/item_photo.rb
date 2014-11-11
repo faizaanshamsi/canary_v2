@@ -5,6 +5,4 @@ class ItemPhoto < ActiveRecord::Base
 
   belongs_to :item,
     inverse_of: :item_photos
-
-  mount_uploader :photo, ItemPhotoUploader
 end
