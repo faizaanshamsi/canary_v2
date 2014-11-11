@@ -38,6 +38,7 @@ group :development, :test do
   gem 'capybara-email'
   gem 'email_spec'
   gem 'poltergeist'
+  gem 'capybara-webkit'
 end
 
 group :development do

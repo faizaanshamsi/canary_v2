@@ -14,6 +14,6 @@ class ItemPhotosController < ApplicationController
     urls.each do |url|
       ItemPhoto.create(photo: url, item_id: params[:item_id])
     end
-    redirect_to item_item_photos_path(params[:item_id])
+    redirect_to user_item_path(current_user, params[:item_id])
   end
 end

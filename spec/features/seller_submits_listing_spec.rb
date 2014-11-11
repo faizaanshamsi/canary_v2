@@ -23,9 +23,15 @@ feature 'seller submits a listing' do
     select item.category.name, from: 'item[category_id]'
     click_on "Add Photos"
 
-    # upload muliple photos
-    # publish item
-    # expect listing to exist, expect photos and content to be presen
+    # TODO: replace with real uploader
+    fill_in "item_photo[photo]", with: 'https://www.filepicker.io/api/file/JvF4LUfScag6kUUqwQjO'
+    click_on "Create Item photo"
+
+    expect(page).to have_content(item.title)
+    expect(page).to have_content(item.description)
+    expect(page).to have_content("Add additional photos")
+    #expect filepicker images
+    expect(page).to have_content("Pending review")
   end
 
   scenario 'seller without location tries to submit a listing' do

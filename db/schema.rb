@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110160825) do
+ActiveRecord::Schema.define(version: 20141111191803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,20 +87,21 @@ ActiveRecord::Schema.define(version: 20141110160825) do
   add_index "item_specials", ["item_id", "special_id"], name: "index_item_specials_on_item_id_and_special_id", unique: true, using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "title",                                     null: false
-    t.text     "description",                               null: false
+    t.string   "title",                                                         null: false
+    t.text     "description",                                                   null: false
     t.string   "dimensions"
     t.string   "brand"
-    t.string   "condition",                                 null: false
+    t.string   "condition",                                                     null: false
     t.integer  "age"
-    t.integer  "user_id",                                   null: false
-    t.integer  "submission_id",                             null: false
-    t.integer  "category_id",                               null: false
+    t.integer  "user_id",                                                       null: false
+    t.integer  "submission_id",                                                 null: false
+    t.integer  "category_id",                                                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "location_id",                               null: false
+    t.integer  "location_id",                                                   null: false
     t.integer  "accepted_offer_id"
     t.decimal  "purchase_price",    precision: 8, scale: 2
+    t.string   "status",                                    default: "drafted", null: false
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree

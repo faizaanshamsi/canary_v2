@@ -6,9 +6,8 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
 require 'email_spec'
-require 'capybara/poltergeist'
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 

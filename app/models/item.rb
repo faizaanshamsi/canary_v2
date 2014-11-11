@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   validates :description, length: { in: 20..400 }  
   validates :age, inclusion: { in: 0...10_000 }
   validates :condition, presence: true, inclusion: { in: CONDITIONS }
+  validates :status, presence: true
 
   validates :category, presence: true
   validates :submission, presence: true
@@ -40,4 +41,9 @@ class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :user 
   belongs_to :location
+
+  def drafted?
+    status == 'drafted'
+  end
 end
+

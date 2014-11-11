@@ -3,9 +3,14 @@ Rails.application.routes.draw do
   root to: "pages#index"
   get "/contact_us", to: 'pages#contact_us'
   resources :items do
+    member do
+      post 'submit_draft'
+    end
     resources :item_photos
   end
-  resources :user, only: [:show] do
+  resources :users, only: [:show] do
     resources :locations
+    resources :items do
+    end
   end
 end

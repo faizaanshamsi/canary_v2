@@ -15,6 +15,7 @@ describe Item do
     it { should validate_presence_of(:submission) } 
     it { should validate_presence_of(:user) }
     it { should validate_presence_of(:location) }
+    it { should validate_presence_of(:status) }
   end
 
   describe 'associations' do

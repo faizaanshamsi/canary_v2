@@ -1,4 +1,8 @@
 class ItemsController < ApplicationController
+  def show
+    @item = Item.find(params[:id])
+    @item_photos = @item.item_photos
+  end
   def new
     authorize_location!
     @item = Item.new
