@@ -18,8 +18,8 @@
 .env
 public/uploads
 .DS_Store
-spec/support/.DS_Store
-spec/support/fixtures
-coverage/*
+/spec/support/.DS_Store
+/spec/support/fixtures
+/coverage/*
 .coveralls.yml
 
