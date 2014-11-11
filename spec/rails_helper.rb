@@ -6,8 +6,6 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
 require 'email_spec'
-require 'coveralls'
-Coveralls.wear!
 
 Capybara.javascript_driver = :webkit 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
