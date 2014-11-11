@@ -103,6 +103,18 @@
         1,
         1,
         null,
+        1,
+        null,
+        null,
+        1,
+        10,
+        0,
+        null,
+        null,
+        null,
+        1,
+        2,
+        null,
         null
       ],
       "/Users/faizaanshamsi/Dropbox/programs/canary/app/models/item.rb": [
@@ -340,8 +352,13 @@
         null,
         1,
         1,
+        1,
+        null,
+        2,
+        0,
         null,
         1,
+        null,
         1,
         null,
         null,
@@ -379,6 +396,6 @@
         null
       ]
     },
-    "timestamp": 1415740613
+    "timestamp": 1415742613
   }
 }

@@ -17,10 +17,15 @@ class ItemPhotosController < ApplicationController
       @item_photo = @item.item_photos.build
       render :new
     else
+      @item_photos = []
       urls.each do |url|
-        ItemPhoto.create(photo: url, item: @item)
+        @item_photos << ItemPhoto.create(photo: url, item: @item)
       end
-      flash[:notice] = 'Images added successfully'
+      if @item_photos.select { |ip| ip.errors[:number_of_photos] }.empty?
+        flash[:notice] = 'Images added successfully'
+      else
+        flash[:notice] = "You may not upload more than #{ItemPhoto.max_photos} photos."
+      end
       redirect_to user_item_path(current_user, @item)
     end
   end
