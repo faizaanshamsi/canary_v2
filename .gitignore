@@ -17,3 +17,6 @@
 
 .env
 public/uploads
+.DS_Store
+spec/support/.DS_Store
+spec/support/fixtures

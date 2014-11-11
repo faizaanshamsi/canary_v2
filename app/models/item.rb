@@ -14,6 +14,7 @@ class Item < ActiveRecord::Base
 
   has_many :asking_prices,
     inverse_of: :item
+  accepts_nested_attributes_for :asking_prices
   has_many :offers,
     inverse_of: :item
   has_many :offers,
