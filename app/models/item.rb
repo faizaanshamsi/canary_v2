@@ -49,5 +49,17 @@ class Item < ActiveRecord::Base
   def drafted?
     status == 'drafted'
   end
+
+  def default_image
+    item_photos.first
+  end
+
+  def current_price
+    asking_prices.order(created_at: :desc).first
+  end
+
+  def listing_price
+    asking_prices.order(created_at: :asc).first
+  end
 end
 

@@ -46,4 +46,31 @@ describe Item do
       expect(item.drafted?).to eql(true)
     end
   end
+
+  describe 'default image' do
+    it 'returns the first image' do
+      item_photo = FactoryGirl.create(:item_photo)
+      item = item_photo.item
+
+      item.reload
+      expect(item.default_image).to eql(item_photo)
+    end
+  end
+
+  describe 'current price' do
+    it 'should return the most recent asking price' do
+      item = FactoryGirl.create(:item, :published)
+      new_price = FactoryGirl.create(:asking_price, item: item)
+      
+      expect(item.current_price).to eql(new_price)
+    end
+  end
+
+  describe 'listing_price' do
+    it 'returns the original listing price' do
+      item = FactoryGirl.create(:item)
+
+      expect(item.listing_price).to eql(item.asking_prices.first)
+    end
+  end
 end

@@ -1,0 +1,9 @@
+<h1>Items for Sale</h2>
+
+<% @items.each do |item| %>
+  <%= filepicker_image_tag item.default_image.photo %>
+  <%= item.title %>
+  <%= item.location.city %>
+  <%= item.current_price.amount %>
+  <%= item.listing_price.amount %>
+<% end %>
