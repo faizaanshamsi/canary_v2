@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize_location!
+    authenticate_user!
     unless current_user.default_location
       flash[:notice] = "Please add a location to continue"
       redirect_to new_user_location_path(current_user) and return

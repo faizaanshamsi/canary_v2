@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item_photo do
-    photo File.join(Rails.root, '/spec/support/fixtures/table.jpg')
+    photo 'https://www.filepicker.io/api/file/qcmSLCGuQLi1wLOPdDuo'
     caption 'Best photo'
 
     association :item
