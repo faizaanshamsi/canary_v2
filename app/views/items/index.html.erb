@@ -1,9 +1,41 @@
-<h1>Items for Sale</h2>
+<div class="container" >
+  <div class="morePost row featuredPostContainer style2 globalPaddingTop " >
+    <h3 class="section-title style2 text-center"><span>Items for Sale</span></h3>
+    <div class="container">
 
-<% @items.each do |item| %>
-  <%= filepicker_image_tag item.default_image.photo %>
-  <%= item.title %>
-  <%= item.location.city %>
-  <%= item.current_price.amount %>
-  <%= item.listing_price.amount %>
-<% end %>
+      <div class= 'row xsResponse'>
+        <% @items.each do |item| %>
+          <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <div class="product">
+            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Favorite"  data-placement="left">
+            <i class="glyphicon glyphicon-heart"></i>
+            </a>
+
+              <div class="image">
+                <div class="quickview">
+                  <a title="Quick View" class="btn btn-xs  btn-quickview" data-target="#product-details-modal" data-toggle="modal"> Quick View </a>
+                </div>
+                <%= link_to (filepicker_image_tag item.default_image.photo, w: 200, h: 200), item_path(item) %>
+              </div>
+              <div class="description">
+                <h4>
+                  <%= link_to item.title, item_path(item) %>
+                </h4>
+                <span class="size"><%= item.location.city %></span>
+              </div>
+              <div class="price">
+                <span><%= item.current_price.amount %></span>
+              </div>
+              <% if item.current_price.amount != item.listing_price.amount %>
+                <div class="old-price">
+                  <span><%= item.listing_price.amount %></span>
+                </div>
+              <% end %>
+              <div class="action-control"> <a class="btn btn-primary"> <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a> </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

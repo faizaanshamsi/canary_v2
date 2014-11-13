@@ -1,0 +1,22 @@
+<div class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "Canary", root_path, class: 'navbar-brand' %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li>
+        <%= link_to "Shop", items_path %>
+      </li>
+      <li>
+        <%= link_to "Sell", items_path %>
+      </li>
+      <li>
+        <%= link_to "How it works", items_path %>
+      </li>
+      <li>
+        <%= link_to "Estate Sales", items_path %>
+      </li>
+    </ul>
+    <p class="navbar-text pull-right">logged_in_user@email.com | <a href="log_out_link_here">Log Out</a></p>
+  </div>
+</div>
