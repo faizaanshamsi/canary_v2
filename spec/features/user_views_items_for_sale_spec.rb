@@ -27,9 +27,10 @@ feature 'User views all items for sale' do
     price_one = FactoryGirl.create(:asking_price)
     price_two = FactoryGirl.create(:asking_price, amount: 1)
 
-    clic
-    
-    expect(price_two.item.title).to appear_before(price_one.item.title)
+    # sort by price high to low 
+    #expect(price_two.item.title).to appear_before(price_one.item.title)
+    # sort by low to high
+    #expect inverse
   end
 
   scenario 'User can sort by date listed' do

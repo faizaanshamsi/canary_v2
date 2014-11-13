@@ -8,8 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
   <body>
-    <%= flash_messages %>
     <%= render 'shared/navbar' %>
+    <%= flash_messages %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

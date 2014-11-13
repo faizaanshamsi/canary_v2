@@ -51,7 +51,7 @@ class Item < ActiveRecord::Base
   end
 
   def default_image
-    item_photos.first
+    item_photos.last
   end
 
   def current_price
